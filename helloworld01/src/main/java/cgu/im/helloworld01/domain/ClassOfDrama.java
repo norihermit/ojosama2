@@ -3,6 +3,7 @@ package cgu.im.helloworld01.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,9 +25,13 @@ public class ClassOfDrama {
 
 	 	@JsonIgnore
 	    @ManyToOne
-	    @JoinColumn(name = "class_id")
+	    @JoinColumn(name = "class_id", insertable = false, updatable = false)
 	    private Class classId;
 
+	 	@JsonIgnore
+	 	@ManyToOne(fetch = FetchType.LAZY)
+	 	@JoinColumn(name = "drama_id", insertable = false, updatable = false)
+	    private Drama drama;
 
 	    public ClassOfDrama() {}
 
@@ -59,6 +64,13 @@ public class ClassOfDrama {
 		public void setClassId(Class classId) {
 			this.classId = classId;
 		}
+		
+		public Drama getDrama() {
+	        return drama;
+	    }
 
+	    public void setDrama(Drama drama) {
+	        this.drama = drama;
+	    }
 
 }

@@ -2,6 +2,7 @@ package cgu.im.helloworld01.domain;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +28,8 @@ public class Drama {
 	private String dramaName, dramaCountry, dramaIntro;
 	private int dramaYear, dramaEpisode;
 	
-	@OneToMany(mappedBy = "dramaId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	@OneToMany(mappedBy = "drama", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ClassOfDrama> classOfDramas;
 
 	public Drama() {}

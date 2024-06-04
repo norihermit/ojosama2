@@ -64,32 +64,32 @@ public class Helloworld01Application implements CommandLineRunner {
 
         ///新增資料///解開註解可以做測試
         // 創建戲劇資料
-//        Drama drama = new Drama();
-//        drama.setDramaName("voice3");
-//        drama.setDramaCountry("韓國國");
-//        drama.setDramaIntro("用聲音聽犯人");
-//        drama.setDramaEpisode(10);
-//        drama.setDramaYear(2017);
-//        drepository.save(drama);
-//
-//        // 將影片有的類別裝在陣列裡
-//        List<String> classNames = Arrays.asList("驚悚", "復仇", "懸疑", "動作");
-//        List<ClassOfDrama> classOfDramaList = new ArrayList<>();
-//        
-//        //用迴圈分開查詢classId，最後用saveAll所有陣列一起儲存到資料庫
-//        for (String className : classNames) {
-//            Class clazz = crepository.findByClassName(className);
-//            if (clazz != null) {
-//                ClassOfDrama classOfDrama = new ClassOfDrama();
-//                classOfDrama.setDramaId(drama);
-//                classOfDrama.setClassId(clazz);
-//                classOfDramaList.add(classOfDrama);
-//            } else {
-//                logger.warn("Class with name {} not found!", className);
-//            }
-//        }
-//        // 保存ClassOfDramaList到整個陣列裡
-//        codrepository.saveAll(classOfDramaList);
+        Drama drama = new Drama();
+        drama.setDramaName("voice3");
+        drama.setDramaCountry("韓國國");
+        drama.setDramaIntro("用聲音聽犯人");
+        drama.setDramaEpisode(10);
+        drama.setDramaYear(2017);
+        drepository.save(drama);
+
+        // 將影片有的類別裝在陣列裡
+        List<String> classNames = Arrays.asList("驚悚", "復仇", "懸疑", "動作");
+        List<ClassOfDrama> classOfDramaList = new ArrayList<>();
+        
+        //用迴圈分開查詢classId，最後用saveAll所有陣列一起儲存到資料庫
+        for (String className : classNames) {
+            Class clazz = crepository.findByClassName(className);
+            if (clazz != null) {
+                ClassOfDrama classOfDrama = new ClassOfDrama();
+                classOfDrama.setDramaId(drama);
+                classOfDrama.setClassId(clazz);
+                classOfDramaList.add(classOfDrama);
+            } else {
+                logger.warn("Class with name {} not found!", className);
+            }
+        }
+        // 保存ClassOfDramaList到整個陣列裡
+        codrepository.saveAll(classOfDramaList);
        
         ///JPA查詢///
         // 印出所有的戲劇名稱

@@ -32,6 +32,7 @@ public class Class {
 		super();
 		this.className = className;
 	}
+	
 
 	public Long getClassid() {
 		return classid;

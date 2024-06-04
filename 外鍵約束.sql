@@ -1,0 +1,5 @@
+ALTER TABLE class_of_drama
+ADD CONSTRAINT FKrq9ph7ifpoe589tpmtjs5d15f
+FOREIGN KEY (drama_id) REFERENCES drama(id)
+ON DELETE CASCADE;
+

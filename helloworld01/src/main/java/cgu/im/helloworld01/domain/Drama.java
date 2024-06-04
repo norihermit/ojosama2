@@ -27,7 +27,7 @@ public class Drama {
 	private String dramaName, dramaCountry, dramaIntro;
 	private int dramaYear, dramaEpisode;
 	
-	@OneToMany(mappedBy = "dramaId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "dramaId", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ClassOfDrama> classOfDramas;
 
 	public Drama() {}

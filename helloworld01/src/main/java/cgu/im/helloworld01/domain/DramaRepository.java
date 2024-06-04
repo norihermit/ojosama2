@@ -37,7 +37,6 @@ public interface DramaRepository extends CrudRepository<Drama, Long> {
             "WHERE c.class_name = :className " +
             "GROUP BY d.id, d.drama_name, d.drama_country, d.drama_intro, d.drama_year",
             nativeQuery = true)
-    
     List<Drama> findDramaWithClassesByClassName(@Param("className") String className);
     
     @Query("select distinct d from Drama d left join fetch d.classOfDramas")

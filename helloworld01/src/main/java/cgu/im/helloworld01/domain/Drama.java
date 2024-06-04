@@ -4,7 +4,8 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,8 +29,9 @@ public class Drama {
 	private String dramaName, dramaCountry, dramaIntro;
 	private int dramaYear, dramaEpisode;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "drama", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonProperty("classOfDramas")
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+	@OneToMany(mappedBy = "dramaId", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ClassOfDrama> classOfDramas;
 
 	public Drama() {}

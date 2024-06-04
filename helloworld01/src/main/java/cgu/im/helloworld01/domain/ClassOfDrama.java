@@ -18,27 +18,22 @@ public class ClassOfDrama {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	 	
-	 	@JsonIgnore
-	    @ManyToOne
-	    @JoinColumn(name = "drama_id")
-	    private Drama dramaId;
-
-	 	@JsonIgnore
-	    @ManyToOne
-	    @JoinColumn(name = "class_id", insertable = false, updatable = false)
-	    private Class classId;
-
-	 	@JsonIgnore
-	 	@ManyToOne(fetch = FetchType.LAZY)
-	 	@JoinColumn(name = "drama_id", insertable = false, updatable = false)
-	    private Drama drama;
+	     @JsonIgnore
+	     @ManyToOne
+	     @JoinColumn(name = "class_id")
+	     private Class classId;
+	 	
+	 	 @JsonIgnore
+	     @ManyToOne(fetch = FetchType.LAZY)
+	     @JoinColumn(name = "drama_id")
+	     private Drama dramaId;
 
 	    public ClassOfDrama() {}
 
-		public ClassOfDrama(Drama dramaId, Class classId) {
+		public ClassOfDrama(Class classId,Drama dramaId) {
 			super();
-			this.dramaId = dramaId;
 			this.classId = classId;
+			this.dramaId = dramaId;
 		}
 
 		public Long getId() {
@@ -64,13 +59,5 @@ public class ClassOfDrama {
 		public void setClassId(Class classId) {
 			this.classId = classId;
 		}
-		
-		public Drama getDrama() {
-	        return drama;
-	    }
-
-	    public void setDrama(Drama drama) {
-	        this.drama = drama;
-	    }
-
+	
 }

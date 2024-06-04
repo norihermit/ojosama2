@@ -16,16 +16,16 @@ import cgu.im.helloworld01.domain.DramaRepository;
 @RequestMapping("/api")
 public class ClassOfDramaController {
 
-	@Autowired
+    @Autowired
     private ClassOfDramaRepository classOfDramaRepository;
-    
+
     @Autowired
     private DramaRepository dramaRepository;
 
     @GetMapping("/dramas/{dramaId}/classes")
     public List<String> getClassesByDramaId(@PathVariable Long dramaId) {
         Drama drama = dramaRepository.findById(dramaId).orElseThrow(() -> new RuntimeException("Drama not found"));
-        List<ClassOfDrama> classOfDramas = classOfDramaRepository.findByDrama(drama);
+        List<ClassOfDrama> classOfDramas = classOfDramaRepository.findByDramaId(drama);
         return classOfDramas.stream()
                             .map(classOfDrama -> classOfDrama.getClassId().getClassName())
                             .collect(Collectors.toList());
